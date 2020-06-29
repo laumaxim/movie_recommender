@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-import flask_app.recommender
-#from json import load
+from . import recommender as rec
 
 app = Flask(__name__)
 #making this file the 'center' of the appication
@@ -20,13 +19,12 @@ def impressum():
 
 @app.route('/movies')
 def movies():
-    #movies = recommender.nmf()
     movies=[]
     user_input = request.args.to_dict()
     if 'movielist' in user_input:
         movielist = user_input['movielist']
         ids = list(map(int, movielist.split(',')))
-        titles = recommender.movieId_to_title(ids)
+        titles = rec.movieId_to_title(ids)
         movies = zip(titles,ids)
     return render_template('movies.html', movies_html=movies)
 
@@ -59,9 +57,9 @@ def results():
     # movies_list = recommender.nmf(user_movies, user_ratings) <- What we want!
 
     if algo_choice == 0:
-        movies_list = recommender.cosim_predict(movie_dict)
+        movies_list = rec.cosim_predict(movie_dict)
     elif algo_choice == 1:
-        movies_list = recommender.get_top_predict(movie_dict)
+        movies_list = rec.get_top_predict(movie_dict)
     else:
         pass
     return render_template('results.html', movies_html = movies_list)
