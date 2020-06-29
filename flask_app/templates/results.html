@@ -1,0 +1,17 @@
+{% extends "_base.html" %}
+{% block title %}Movie Recommender - Results{% endblock %}
+
+
+{% block head %}
+{% endblock %}
+{% block nav_results %}active{% endblock %}
+{% block nav_results_link %}{% endblock %}
+{% block content %}
+<h1>Here are your results!</h1>
+
+<ul>
+  {% for m in movies_html %}
+  <li> {{ m }} </li>
+  {% endfor %}
+</ul>
+{% endblock %}

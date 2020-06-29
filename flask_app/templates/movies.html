@@ -1,0 +1,63 @@
+{% extends "_base.html" %}
+{% block title %}Movie Recommender - Movies{% endblock %}
+
+
+{% block head %}
+<link href="static/jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block nav_movies %}active{% endblock %}
+
+{% block content %}
+  <h4>Neighborhood-Based Collaborative Filtering</h4>
+    <form action="/movies">
+      <p>Please choose one or more movies from the list.</p>
+  
+      <input type="text" name="movielist" placeholder="List of movies"
+      class="flexdatalist"
+      data-min-length="1"
+      data-searchContain="true"
+      multiple=""
+      data-selection-required='1'
+      data-data='flask_app/static/movies.json'
+      data-search-in='title'
+      data-value-property='movieId'
+      data-search-by-word='false'
+      required>
+      <input type="submit" value="Submit your movie selection">
+    </form>
+
+    {% if movies_html %}
+    Please rate the movies from 0.5 stars to 5.0 stars.
+    <form action="/results">
+      {% for m in movies_html %}
+      {{m[0]}} <input type="text" name="{{m[1]}}" placeholder="0.0 - 5.0" required>
+      <br>
+      {% endfor %}
+      Please also choose an algorithm for the recommender:<br>
+      <input type="radio" id="top_list" name="algo" value="1">
+      <label for="top_list">Top List</label><br>
+      <input type="radio" id="Cosine similarity" name="algo" value="0">
+      <label for="Cosine similarity">Cosine Similarity</label><br>
+      <input type="submit" value="Submit your ratings"><br>
+      This will get your recommendation.<br>
+    </form>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+   <script src="static/jquery.flexdatalist.min.js"></script>
+   <!--
+   <script>
+   $('.flexdatalist-json').flexdatalist({
+    searchContain: false,
+    valueProperty: 'string',
+    minLength: 1,
+    selectionRequired: 1,
+    focusFirstResult: true,
+    searchIn: 'title',
+    searchByWord: true,
+    data: 'static/movies.json'
+    });
+   </script>-->
+{% endblock %}
