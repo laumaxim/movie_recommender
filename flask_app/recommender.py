@@ -5,13 +5,16 @@ from json import dump
 from sklearn.impute import KNNImputer
 from sklearn.decomposition import NMF
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 
-movies = pd.read_csv('flask_app/static/movies.csv',sep=',')
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+APP_STATIC = os.path.join(APP_ROOT, 'static')
+movies = pd.read_csv(os.path.join(APP_STATIC,'movies.csv'))
 
 #movies = pd.concat([movies,movies['genres'].str.get_dummies()],axis=1)
 #movies_json = movies[['movieId','title','genres']].to_json('movies.json',orient='records')
 
-ratings = pd.read_csv('flask_app/static/ratings.csv')
+ratings = pd.read_csv(os.path.join(APP_STATIC,'ratings.csv'))
 
 top_ratings = ratings.groupby('movieId')['rating'].agg(['mean','count']).sort_values(['mean','count'],ascending=False)
 

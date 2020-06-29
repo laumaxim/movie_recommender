@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
-import recommender
+import flask_app.recommender
 #from json import load
 
 app = Flask(__name__)
 #making this file the 'center' of the appication
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 #python decorator
 #the app.route decorator make the output of index() 'route to '/'
