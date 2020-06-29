@@ -2,20 +2,19 @@ from flask import Flask, render_template, request
 from . import recommender as rec
 
 app = Flask(__name__)
-#making this file the 'center' of the appication
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-
-#python decorator
 #the app.route decorator make the output of index() 'route to '/'
 @app.route('/index')
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
 @app.route('/impressum')
 def impressum():
     return render_template('impressum.html')
+
 
 @app.route('/movies')
 def movies():
@@ -31,14 +30,14 @@ def movies():
 
 @app.route('/results')
 def results():
-    user_input = request.args.to_dict() # arguments should unique
+    user_input = request.args.to_dict() # arguments should be unique
     movie_dict = {}
     for x in user_input.keys():
         if x == 'algo':
             algo_choice = int(user_input[x])
         else:
             movieid = int(x)
-            rating = float(user_input[x])
+            rating  = float(user_input[x])
             movie_dict[movieid] = rating
 
     # What we need to do:
@@ -52,8 +51,6 @@ def results():
              # SANITY CHECK: have a np.array with shape (1, ~9719)
         # 6. Sort by highest values.
         # 7. And finally, map back to titles.
-
-
     # movies_list = recommender.nmf(user_movies, user_ratings) <- What we want!
 
     if algo_choice == 0:

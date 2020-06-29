@@ -12,11 +12,6 @@ Template for deploying a flask app to heroku.
 
 1. clone the repository
 
-```bash
-git clone https://github.com/bonartm/heroku-flask.git
-cd heroku-flask
-```
-
 2. create a new heroku app
 
 ```bash
