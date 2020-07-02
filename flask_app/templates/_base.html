@@ -28,6 +28,8 @@
             font-family: 'Raleway', sans-serif;
         }
         </style>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
     {% block head %}
     {% endblock %}
 </head>
@@ -37,7 +39,9 @@
 
 
       <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+          <img src="static/Cinema.svg" width="30" height="30" alt="">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -68,11 +72,11 @@
         {% endblock %}
     </blockquote>
         <hr>
-        <h2>Epilogue</h2>
-        <p>The site layour was inspired by the geniuses behind <a href="https://thebestmotherfucking.website/">this website.</a>
+
             <br>
         &copy; Copyright 2020 by <a href="http://domain.invalid/">me</a>.
         </p>
+        <a href="https://thenounproject.com/term/cinema/79146/">Cinema icon</a> by Vicons Design from the <a href="https://thenounproject.com">Noun Project</a>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script></script>

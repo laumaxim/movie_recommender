@@ -29,19 +29,44 @@
 
     {% if movies_html %}
     Please rate the movies from 0.5 stars to 5.0 stars.
-    <form action="/results">
-      {% for m in movies_html %}
-      {{m[0]}} <input type="text" name="{{m[1]}}" placeholder="0.0 - 5.0" required>
-      <br>
-      {% endfor %}
-      Please also choose an algorithm for the recommender:<br>
-      <input type="radio" id="top_list" name="algo" value="1">
-      <label for="top_list">Top List</label><br>
-      <input type="radio" id="Cosine similarity" name="algo" value="0">
-      <label for="Cosine similarity">Cosine Similarity</label><br>
-      <input type="submit" value="Submit your ratings"><br>
-      This will get your recommendation.<br>
-    </form>
+    <div class="container">
+      <form action="/results">
+        {% for m in movies_html %}
+        <div class="row">
+          <div class="col">
+            {{m[0]}}
+          </div>
+          <div class="col-2">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="{{m[1]}}" id="gridRadios1" value="5" checked>
+              <label class="form-check-label" for="gridRadios1">
+                Top
+              </label>
+            </div>
+          </div>
+              <div class="col-2">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="{{m[1]}}" id="gridRadios1" value="0">
+                <label class="form-check-label" for="gridRadios1">
+                  Flop
+                </label>
+                </div>
+              </div>
+            </div>
+          <!--<input type="text" name="{{m[1]}}" placeholder="0.0 - 5.0" required> -->
+          <br>
+        {% endfor %}
+    </div>
+
+        Please also choose an algorithm for the recommender:<br>
+
+        <input type="radio" id="Cosine similarity" name="algo" value="0" checked>
+        <label for="Cosine similarity">Cosine Similarity</label><br>
+        <input type="radio" id="top_list" name="algo" value="1">
+        <label for="top_list">Top List</label><br>
+        <input type="submit" value="Submit your ratings"><br>
+        This will get your recommendation.<br>
+      </form>
     {% endif %}
 {% endblock %}
 

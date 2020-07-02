@@ -15,7 +15,7 @@ Template for deploying a flask app to heroku.
 2. create a new heroku app
 
 ```bash
-heroku create <my-app-name>`
+heroku create <my-app-name>
 ```
 
 3. test the app locally

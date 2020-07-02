@@ -119,6 +119,7 @@ def cosim_predict(dict_of_ratings):
     reviews_added  = add_user_to_reviews(dict_of_ratings,reviews)
     similar_matrix = cos_similar(reviews_added)
     similar_users  = get_similar_users(reviews_added.shape[0],similar_matrix,1)
-    movieIds       = get_top_of_user(reviews, similar_users[0])
+    movieIds       = get_top_of_user(reviews, similar_users[0], len(seen)+20)
     return movieId_to_title([item for item in movieIds if item not in seen])
 
+#### implement average of most similar users
