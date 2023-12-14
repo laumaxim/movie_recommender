@@ -54,7 +54,7 @@ def add_user_to_reviews(user_dict,reviews):
         data=user_dict,
         name=reviews.index.max()+1,
         dtype=float)
-    return reviews.append(user_series)
+    return pd.concat([reviews,pd.DataFrame([user_series])])
 
 
 def cos_similar(reviews):
