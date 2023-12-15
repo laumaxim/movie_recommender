@@ -141,5 +141,3 @@ cython_debug/
 vsc_workspace.code-workspace
 heroku_flask/
 notebooks/
-
-test_reqs.txt

@@ -1,7 +1,11 @@
 # Getting started with Flask and Heroku
 
-Template for deploying a flask app to heroku.
+Instruction for deploying this small web application written in Flask to a Heroku cloud.
+The app asks the user for a list of movies, then asks to rate those movies as "Top" or "Flop", good or bad movies respectively.
+The app utilizes a dataset of movies and movie ratings made by humans on an online website.
+The user has a choice of two methods of recommendation: simply a list of top-rated, but unwatched movies or a list of recommended movies created by collaborative filtering. Cosine similarity is used to compare the user rating to the ratings in the dataset and the most similiar movies are then recommended.
 
+Follow the steps below to run the app.
 
 ## Requirements
 
@@ -45,4 +49,7 @@ heroku open
 
 ## Further Ressources
 
-- [Official python heroku tutorial](https://devcenter.heroku.com/articles/getting-started-with-python) using Djano
+- [Official python heroku tutorial](https://devcenter.heroku.com/articles/getting-started-with-python) using Django
+
+The dataset:
+> F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4: 19:1–19:19. <https://doi.org/10.1145/2827872>
