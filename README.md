@@ -24,7 +24,7 @@ heroku create <my-app-name>
 
 3. test the app locally
 
-```bash
+```bash on *nix
 heroku local web
 ```
 
